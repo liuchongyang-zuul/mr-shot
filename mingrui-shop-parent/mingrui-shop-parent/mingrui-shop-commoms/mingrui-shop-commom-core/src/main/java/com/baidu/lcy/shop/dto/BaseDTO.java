@@ -1,0 +1,34 @@
+package com.baidu.lcy.shop.dto;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+/**
+ * @ClassName BaseDTO
+ * @Description: TODO
+ * @Author liuchongyang
+ * @Date 2020/8/31
+ * @Version V1.0
+ **/
+@ApiModel(value = "用于品牌DTO")
+@Data
+public class BaseDTO {
+    @ApiModelProperty(value = "当前页",example = "1")
+    private Integer page;
+    @ApiModelProperty(value = "每页显示多少",example = "5")
+    private Integer rows;
+    @ApiModelProperty(value = "排序字段")
+    private String sort;
+    @ApiModelProperty(value = "是否降序")
+    private Boolean desc;
+    @ApiModelProperty(hidden = true)
+    public String getGlobalBrand(){
+
+        if(sort != null){
+            return sort + " " + (desc?"desc":"");
+        }
+        return null;
+    }
+
+}
