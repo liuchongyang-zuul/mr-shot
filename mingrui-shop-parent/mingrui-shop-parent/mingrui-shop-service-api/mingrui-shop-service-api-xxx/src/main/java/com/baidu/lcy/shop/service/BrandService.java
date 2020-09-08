@@ -29,4 +29,8 @@ public interface BrandService {
     @ApiOperation(value = "刪除")
     @DeleteMapping(value = "brend/deleteBrand")
     public Result<PageInfo<BrandEntity>> deleteBrand(Integer id);
+
+    @ApiOperation(value="查询")
+    @GetMapping(value = "brend/byList")
+    public Result<List<BrandEntity>> getBrandByList(Integer cid);
 }

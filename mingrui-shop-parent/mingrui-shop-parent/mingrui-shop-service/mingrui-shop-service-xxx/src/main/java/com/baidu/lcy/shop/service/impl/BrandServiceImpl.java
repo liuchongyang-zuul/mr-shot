@@ -39,14 +39,14 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
     @Transactional
     public Result<PageInfo<BrandEntity>> getBrandList(BrandDTO brandDTO) {
 
-        if(ObjectUtil.isNotNull(brandDTO.getPage())
-                && ObjectUtil.isNotNull(brandDTO.getRows()))
+        if(ObjectUtil.isNotNull(brandDTO.getPage()) && ObjectUtil.isNotNull(brandDTO.getRows())){
             PageHelper.startPage(brandDTO.getPage(),brandDTO.getRows());
+        }
 
         Example example = new Example(BrandEntity.class);
 
         if(brandDTO.getSort() != null){
-            example.setOrderByClause(brandDTO.getGlobalBrand());
+            example.setOrderByClause(brandDTO.getOrderByClause());
         }
         Example.Criteria criteria = example.createCriteria();
         if(ObjectUtil.isNotNull(brandDTO.getId())){
@@ -144,4 +144,18 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
             categoryBrandMapper.insertSelective(categoryBrandEntity);
         }
     }
+
+    @Override
+    public Result<List<BrandEntity>> getBrandByList(Integer cid) {
+
+        if(cid != null){
+            List<BrandEntity> brandByCategory = mapper.getBrandByCategory(cid);
+            return this.setResultSuccess(brandByCategory);
+        }
+
+
+        return null;
+    }
+
+
 }

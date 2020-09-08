@@ -22,7 +22,7 @@ zuul:
     -upload-server
 #配置负载
 ribbon:
-  ConnectTimeout: 2500 # 连接超时时间(ms)
+  ConnectTimeout: 250 # 连接超时时间(ms)
   ReadTimeout: 10000 # 通信超时时间(ms)
   OkToRetryOnAllOperations: true # 是否对所有操作重试
   MaxAutoRetriesNextServer: 2 # 同一服务不同实例的重试次数
