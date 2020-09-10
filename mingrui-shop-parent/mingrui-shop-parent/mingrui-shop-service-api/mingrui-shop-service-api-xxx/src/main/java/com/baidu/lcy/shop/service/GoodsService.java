@@ -39,4 +39,8 @@ public interface GoodsService {
     @PutMapping(value = "spu/save")
     @ApiOperation(value = "修改")
     Result<JSONObject> edit(@RequestBody SpuDTO spuDTO);
+
+    @GetMapping(value = "spu/sold")
+    @ApiOperation(value = "修改上下架")
+    Result<JSONObject> sold(Integer id,Integer saleable);
 }

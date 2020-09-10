@@ -6,8 +6,10 @@ import com.baidu.lcy.shop.base.Result;
 import com.baidu.lcy.shop.dto.BrandDTO;
 import com.baidu.lcy.shop.entity.BrandEntity;
 import com.baidu.lcy.shop.entity.CategoryBrandEntity;
+import com.baidu.lcy.shop.entity.SpuEntity;
 import com.baidu.lcy.shop.mapper.BrandMapper;
 import com.baidu.lcy.shop.mapper.CategoryBrandMapper;
+import com.baidu.lcy.shop.mapper.GoodsMapper;
 import com.baidu.lcy.shop.service.BrandService;
 import com.baidu.lcy.shop.utils.BaiduBeanUtil;
 import com.baidu.lcy.shop.utils.ObjectUtil;
@@ -34,6 +36,8 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
     private BrandMapper mapper;
     @Resource
     private CategoryBrandMapper categoryBrandMapper;
+    @Resource
+    private GoodsMapper goodsMapper;
 
     @Override
     @Transactional
@@ -109,6 +113,11 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
     @Override
     @Transactional
     public Result<PageInfo<BrandEntity>> deleteBrand(Integer id) {
+
+        Example example = new Example(SpuEntity.class);
+        example.createCriteria().andEqualTo("brandId",id);
+        List<SpuEntity> spuEntities = goodsMapper.selectByExample(example);
+        if(spuEntities.size() >= 1) return this.setResultError("这个有商品绑定着呢不能删里面的东西");
 
         mapper.deleteByPrimaryKey(id);
 

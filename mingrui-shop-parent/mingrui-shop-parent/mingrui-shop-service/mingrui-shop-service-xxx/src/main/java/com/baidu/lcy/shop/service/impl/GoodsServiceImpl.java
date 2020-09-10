@@ -160,6 +160,7 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
     }
 
     @Override
+    @Transactional
     public Result<JSONObject> edit(SpuDTO spuDTO) {
         final Date date = new Date();
         SpuEntity spuEntity = BaiduBeanUtil.copyProperties(spuDTO, SpuEntity.class);
@@ -181,6 +182,20 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         }
 
         this.addSkuAndSpu(spuDTO.getSkus(),spuDTO.getId(),date);
+
+        return this.setResultSuccess();
+    }
+
+    @Override
+    public Result<JSONObject> sold(Integer id,Integer saleable) {
+
+        if(ObjectUtil.isNotNull(id) && ObjectUtil.isNotNull(saleable)){
+            SpuEntity spuEntity = new SpuEntity();
+
+            spuEntity.setId(id);
+            spuEntity.setSaleable(saleable);
+            goodsMapper.updateByPrimaryKeySelective(spuEntity);
+        }
 
         return this.setResultSuccess();
     }
