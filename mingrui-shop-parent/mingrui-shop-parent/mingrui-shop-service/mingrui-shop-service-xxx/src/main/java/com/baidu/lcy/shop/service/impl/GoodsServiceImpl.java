@@ -150,9 +150,11 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
 
         List<Long> collect = skuEntities.stream().map(skuEntity -> skuEntity.getId()).collect(Collectors.toList());
 
-        skuMapper.deleteByIdList(collect);
+        if(collect.size() > 0){
+            skuMapper.deleteByIdList(collect);
 
-        stockMapper.deleteByIdList(collect);
+            stockMapper.deleteByIdList(collect);
+        }
 
         return this.setResultSuccess();
     }
@@ -172,9 +174,11 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
 
         List<Long> collect = skuEntities.stream().map(skuEntity -> skuEntity.getId()).collect(Collectors.toList());
 
-        skuMapper.deleteByIdList(collect);
+        if(collect.size() > 0){
+            skuMapper.deleteByIdList(collect);
 
-        stockMapper.deleteByIdList(collect);
+            stockMapper.deleteByIdList(collect);
+        }
 
         this.addSkuAndSpu(spuDTO.getSkus(),spuDTO.getId(),date);
 
