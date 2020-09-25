@@ -8,6 +8,7 @@ import com.baidu.lcy.shop.entity.SpecParamEntity;
 import com.baidu.lcy.shop.validate.group.MingRuiOperation;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public interface SpecGroudService {
 
     @ApiOperation(value = "通过条件查询规格组")
     @GetMapping(value = "specgroud/list")
-    Result<List<SpecGroudEntity>> list(SpecGroudDTO specGroudDTO);
+    Result<List<SpecGroudEntity>> list(@SpringQueryMap SpecGroudDTO specGroudDTO);
 
     @ApiOperation(value = "增加规格组")
     @PostMapping(value = "specgroud/save")
@@ -34,7 +35,7 @@ public interface SpecGroudService {
 
     @ApiOperation(value = "查询规格参数")
     @GetMapping(value = "specparam/list")
-    Result<List<SpecParamEntity>> listParam(SpecParamDTO specParamDTO);
+    Result<List<SpecParamEntity>> listParam(@SpringQueryMap SpecParamDTO specParamDTO);
 
     @ApiOperation(value = "增加规格参数")
     @PostMapping(value = "specparam/save")

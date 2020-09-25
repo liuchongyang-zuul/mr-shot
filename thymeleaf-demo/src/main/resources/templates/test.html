@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--    你好，<span th:text="${name}"></span>-->
+
+<!--你好<span th:text="${stu.code}"></span><br>-->
+<!--密码是：<span data-th-text="${stu.pass}"></span><br>-->
+<!--您的年龄是：<span th:text="${stu.age}"></span><br>-->
+<!--您喜欢的颜色是<span th:utext="${stu.likeColor}"></span>-->
+<!--<div th:object="${stu}">-->
+<!--<span th:text="*{code}"></span><br>-->
+<!--<span th:text="*{pass}"></span><br>-->
+<!--<span th:text="*{age}"></span><br>-->
+<!--<span th:utext="*{likeColor}"></span><br>-->
+<!--<span th:text="${stu.code.substring(2)}"></span><br>-->
+<!--<span th:text="${stu.code.split('')[1]}"></span><br>-->
+
+<!--<span th:text="666"></span>-->
+<!--<span th:text="1248 - 6"></span>-->
+<!--<span th:if="${stu.age} >=119">-->
+<!--    你已经是个成年人了-->
+<!--</span>-->
+<!--<span th:text="|你是${stu.code}吗|"></span>-->
+<!--<span th:if="${stu.age} ne 188">-->
+<!--    你已经是个成年人了-->
+<!--</span>-->
+<!--<span th:text="${stu.age ge 19 ? '成年' : '未成年'}"></span>-->
+<!--<span th:text="${stu.code ?: ''}"></span>-->
+
+<ul>
+    <li th:each="stu,stat : ${stuList}">
+        <span th:text="${stat.index}"></span>--
+        <span th:switch="${stu.code}">
+            <span th:case="'001'">1号员工，骨灰级</span>
+            <span th:case="'002'">2号员工，元老级</span>
+            <span th:case="'003'">3号员工，老员工</span>
+            <span th:case="'004'">4号员工，新员工</span>
+            <span th:case="'005'">5号员工，老特质员工</span>
+        </span>--
+        <span th:text="${stu.pass}"></span>--
+        <span th:if="${stu.age ge 60}">
+            可以退休
+        </span>
+        <span th:unless="${stu.age ge 60}">
+            不可以退休
+        </span>--
+        </span>--
+        <span th:text="${stu.likeColor}"></span>
+    </li>
+</ul>
+<script th:inline="javascript">
+    const  stuList=/*[[${stuList}]]*/;
+    const  stu=/*[[${stuList[0]}]]*/;
+    const  age=/*[[${stuList[0].age}]]*/;
+
+    console.log("集合："+stuList);
+    console.log("对象："+stu);
+    console.log("属性："+age);
+
+    stuList.forEach(stu=>{
+        console.log(stu.code+"   "+stu.pass)
+    })
+</script>
+</body>
+</html>

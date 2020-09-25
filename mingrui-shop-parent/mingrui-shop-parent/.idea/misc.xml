@@ -8,11 +8,14 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../../es-beam/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/../../es-bemo/pom.xml" />
         <option value="$PROJECT_DIR$/mingrui-shop-service-api-xxx/pom.xml" />
+        <option value="$PROJECT_DIR$/mingrui-shop-service-api/mingrui-shop-service-api-search/pom.xml" />
       </set>
     </option>
   </component>

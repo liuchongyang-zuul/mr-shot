@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName BrandServiceImpl
@@ -53,6 +55,7 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
             example.setOrderByClause(brandDTO.getOrderByClause());
         }
         Example.Criteria criteria = example.createCriteria();
+
         if(ObjectUtil.isNotNull(brandDTO.getId())){
             criteria.andEqualTo("id",brandDTO.getId());
         }
@@ -164,6 +167,15 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
 
 
         return null;
+    }
+
+    @Override
+    public Result<List<BrandEntity>> getBrandByIds(String brandIds) {
+        List<Integer> collect = Arrays.asList(brandIds.split(","))
+                .stream().map(brand -> Integer.parseInt(brand))
+                .collect(Collectors.toList());
+        List<BrandEntity> brandEntities = mapper.selectByIdList(collect);
+        return this.setResultSuccess(brandEntities);
     }
 
 

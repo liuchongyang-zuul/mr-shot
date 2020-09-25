@@ -90,6 +90,12 @@ public class SpecGroudServiceImpl extends BaseApiService implements SpecGroudSer
         if(ObjectUtil.isNotNull(specParamDTO.getCid())) {
             criteria.andEqualTo("cid",specParamDTO.getCid());
         }
+        if (ObjectUtil.isNotNull(specParamDTO.getSearching())) {
+            criteria.andEqualTo("searching",specParamDTO.getSearching());
+        }
+        if (ObjectUtil.isNotNull(specParamDTO.getGeneric())) {
+            criteria.andEqualTo("generic",specParamDTO.getGeneric());
+        }
         List<SpecParamEntity> specParamEntities = paramMapper.selectByExample(example);
         return this.setResultSuccess(specParamEntities);
     }

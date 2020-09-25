@@ -1,12 +1,13 @@
 package com.baidu.lcy.shop.dto;
 
+import com.baidu.lcy.shop.entity.SpecParamEntity;
 import com.baidu.lcy.shop.validate.group.MingRuiOperation;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * @ClassName SpecGroudDTO
@@ -28,5 +29,7 @@ public class SpecGroudDTO {
     @ApiModelProperty(value = "规格组名称")
     @NotNull(message = "规格组名称不能为空",groups = {MingRuiOperation.Add.class})
     private String name;
+    @ApiModelProperty(hidden = true)
+    private List<SpecParamEntity> paramList;
 
 }

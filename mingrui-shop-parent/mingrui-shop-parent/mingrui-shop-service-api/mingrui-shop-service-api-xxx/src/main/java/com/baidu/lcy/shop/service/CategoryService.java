@@ -32,4 +32,8 @@ public interface CategoryService {
     @ApiOperation(value = "通过查询商品分类")
     @GetMapping(value = "category/listId")
     public Result<List<CategoryEntity>> getlistId(Integer brandId);
+
+    @ApiOperation(value = "通过查询商品分类")
+    @GetMapping(value = "category/getCateByIds")
+    Result<List<CategoryEntity>> getCateByIds(@RequestParam String cateIds);
 }

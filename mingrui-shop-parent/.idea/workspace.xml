@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f811bce2-9c52-46bc-913c-b1d46f945f5f" name="Default Changelist" comment="" />
+    <list default="true" id="f811bce2-9c52-46bc-913c-b1d46f945f5f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../es-demo/es-demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../es-demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../es-demo/src/main/java/com/baidu/lcy/es/RunTestEsApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../es-demo/src/main/java/com/baidu/lcy/es/entity/GoodsEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../es-demo/src/main/java/com/baidu/lcy/es/repository/GoodsEsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../es-demo/src/main/java/com/baidu/lcy/es/util/ESHighLightUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../es-demo/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../es-demo/src/test/java/EsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mingrui-shop-parent/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-service-api/mingrui-shop-service-api-search/mingrui-shop-service-api-search.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-service-api/mingrui-shop-service-api-search/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thymeleaf-demo/src/main/java/com/baidu/demo/RunThtmeleafApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thymeleaf-demo/src/main/java/com/baidu/demo/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thymeleaf-demo/src/main/java/com/baidu/demo/entity/TestEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thymeleaf-demo/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thymeleaf-demo/src/main/resources/templates/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thymeleaf-demo/thymeleaf-demo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-parent/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-parent/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-parent/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-basics/mingrui-shop-basic-update-server/target/classes/com/baidu/lcy/shop/RunUpdateApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-basics/mingrui-shop-basic-update-server/target/classes/com/baidu/lcy/shop/config/FastClientImporter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-basics/mingrui-shop-basic-update-server/target/classes/com/baidu/lcy/shop/global/GlobalCorsConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-basics/mingrui-shop-basic-update-server/target/classes/com/baidu/lcy/shop/update/controller/FastDFSUploadController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-basics/mingrui-shop-basic-update-server/target/classes/com/baidu/lcy/shop/update/controller/UpdateController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-service-api/mingrui-shop-service-api-xxx/target/classes/com/baidu/lcy/shop/service/GoodsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-service-api/mingrui-shop-service-api-xxx/target/classes/com/baidu/lcy/shop/service/GoodsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-service-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-service-api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/lcy/shop/service/impl/GoodsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-parent/mingrui-shop-service/mingrui-shop-service-xxx/src/main/java/com/baidu/lcy/shop/service/impl/GoodsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mingrui-shop-parent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mingrui-shop-parent/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1599231286856</updated>
       <workItem from="1599231289394" duration="21000" />
+      <workItem from="1600255487701" duration="40000" />
     </task>
     <servers />
   </component>

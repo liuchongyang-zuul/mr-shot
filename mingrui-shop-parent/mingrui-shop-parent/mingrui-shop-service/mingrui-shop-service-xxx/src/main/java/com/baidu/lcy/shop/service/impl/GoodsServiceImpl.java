@@ -53,7 +53,7 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
     private StockMapper stockMapper;
 
     @Override
-    public Result<PageInfo<SpuEntity>> list(SpuDTO spuDTO) {
+    public Result<List<SpuDTO>> list(SpuDTO spuDTO) {
 
         if(ObjectUtil.isNotNull(spuDTO.getPage()) && ObjectUtil.isNotNull(spuDTO.getRows())){
             PageHelper.startPage(spuDTO.getPage(),spuDTO.getRows());
@@ -68,6 +68,9 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         };
         if(ObjectUtil.isNotNull(spuDTO.getSaleable()) && spuDTO.getSaleable() != 2){
             criteria.andEqualTo("saleable",spuDTO.getSaleable());
+        }
+        if(ObjectUtil.isNotNull(spuDTO.getId())){
+            criteria.andEqualTo("id",spuDTO.getId());
         }
 
         //排序
@@ -215,5 +218,4 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
             stockMapper.insertSelective(stockEntity);
         });
     }
-
 }

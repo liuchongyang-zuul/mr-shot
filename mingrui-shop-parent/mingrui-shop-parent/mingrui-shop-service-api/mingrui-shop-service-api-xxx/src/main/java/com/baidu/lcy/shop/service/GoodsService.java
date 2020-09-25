@@ -5,10 +5,9 @@ import com.baidu.lcy.shop.base.Result;
 import com.baidu.lcy.shop.dto.SkuDTO;
 import com.baidu.lcy.shop.dto.SpuDTO;
 import com.baidu.lcy.shop.entity.SpuDetailEntity;
-import com.baidu.lcy.shop.entity.SpuEntity;
-import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public interface GoodsService {
 
     @GetMapping(value = "spu/list")
     @ApiOperation(value = "查询")
-    Result<PageInfo<SpuEntity>> list(SpuDTO spuDTO);
+    Result<List<SpuDTO>> list(@SpringQueryMap SpuDTO spuDTO);
 
     @PostMapping(value = "spu/save")
     @ApiOperation(value = "增加")
@@ -26,11 +25,11 @@ public interface GoodsService {
 
     @GetMapping(value = "spuDetail/list")
     @ApiOperation(value = "查询")
-    Result<SpuDetailEntity> getSpuDetailBydSpu(Integer spuId);
+    Result<SpuDetailEntity> getSpuDetailBydSpu(@RequestParam Integer spuId);
 
     @GetMapping(value = "sku/list")
     @ApiOperation(value = "查询")
-    Result<List<SkuDTO>> getSkuBydSpu(Integer spuId);
+    Result<List<SkuDTO>> getSkuBydSpu(@RequestParam Integer spuId);
 
     @DeleteMapping(value = "spu/delete")
     @ApiOperation(value = "删除")
@@ -42,5 +41,5 @@ public interface GoodsService {
 
     @GetMapping(value = "spu/sold")
     @ApiOperation(value = "修改上下架")
-    Result<JSONObject> sold(Integer id,Integer saleable);
+    Result<JSONObject> sold(@RequestParam Integer id,Integer saleable);
 }
