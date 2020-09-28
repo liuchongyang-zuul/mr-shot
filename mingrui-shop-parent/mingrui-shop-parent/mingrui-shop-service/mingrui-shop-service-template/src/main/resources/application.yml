@@ -26,3 +26,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+mrshop:
+  static:
+    html:
+      path: D:\static-html\item #生成的html文件存储的路径

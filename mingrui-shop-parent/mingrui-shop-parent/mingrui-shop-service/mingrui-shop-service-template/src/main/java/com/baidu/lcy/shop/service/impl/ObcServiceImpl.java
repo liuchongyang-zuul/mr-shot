@@ -1,5 +1,7 @@
 package com.baidu.lcy.shop.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
+import com.baidu.lcy.shop.base.BaseApiService;
 import com.baidu.lcy.shop.base.Result;
 import com.baidu.lcy.shop.dto.*;
 import com.baidu.lcy.shop.entity.*;
@@ -7,39 +9,98 @@ import com.baidu.lcy.shop.feign.BrandFeign;
 import com.baidu.lcy.shop.feign.CategoryFeign;
 import com.baidu.lcy.shop.feign.GoodsFeign;
 import com.baidu.lcy.shop.feign.SpecificationFeign;
+import com.baidu.lcy.shop.service.TemplateService;
 import com.baidu.lcy.shop.utils.BaiduBeanUtil;
 import com.github.pagehelper.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RestController;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+
 /**
- * @ClassName TemplateServiceImpl
+ * @ClassName ObcServiceImpl
  * @Description: TODO
  * @Author liuchongyang
- * @Date 2020/9/23
+ * @Date 2020/9/25
  * @Version V1.0
  **/
-//@Service
-public class TemplateServiceImpl{
+@RestController
+public class ObcServiceImpl extends BaseApiService implements TemplateService {
 
-    //@Autowired
+    @Autowired
     private GoodsFeign goodsFeign;
 
-    //@Autowired
+    @Autowired
     private BrandFeign brandFeign;
 
-    //@Autowired
+    @Autowired
     private SpecificationFeign specificationFeign;
 
-    //@Autowired
+    @Autowired
     private CategoryFeign categoryFeign;
 
-    //@Override
-    public Map<String, Object> getGoodsInfo(Integer spuId) {
+    @Autowired
+    private TemplateEngine templateEngine;
+
+    @Value(value = "${mrshop.static.html.path}")
+    private String staticHTMLPath;
+
+    @Override
+    public Result<JSONObject> createStaticHTMLTemplate(Integer spuId) {
+
+        Map<String, Object> map = this.getGoodsInfo(spuId);
+        //创建模板引擎上下文
+        Context context = new Context();
+        //将所有准备的数据放到模板中
+        context.setVariables(map);
+
+        File file = new File(staticHTMLPath, spuId + ".html");
+        //构建文件输出流
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(file, "UTF-8");
+
+            templateEngine.process("item",context,writer);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } finally {
+            writer.close();
+        }
+
+        return this.setResultSuccess();
+    }
+
+    @Override
+    public Result<JSONObject> initStaticHTMLTemplate() {
+
+        Result<List<SpuDTO>> list = goodsFeign.list(new SpuDTO());
+        if(list.getCode() == 200){
+            List<SpuDTO> listData = list.getData();
+            listData.stream().forEach(spuDTO ->{
+                createStaticHTMLTemplate(spuDTO.getId());
+            });
+
+        }
+        return this.setResultSuccess();
+    }
+
+
+
+    private Map<String, Object> getGoodsInfo(Integer spuId) {
 
         SpuDTO spuDTO = new SpuDTO();
         HashMap<String, Object> map = new HashMap<>();
